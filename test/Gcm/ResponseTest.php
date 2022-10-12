@@ -7,19 +7,19 @@
  * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd New BSD License
  *
- * @category   ZendService
+ * @category   Laminas
  */
-namespace ZendServiceTest\Google\Gcm;
+namespace LaminasTest\Google\Gcm;
 
+use Laminas\Google\Gcm\Message;
+use Laminas\Google\Gcm\Response;
 use PHPUnit\Framework\TestCase;
-use ZendService\Google\Gcm\Message;
-use ZendService\Google\Gcm\Response;
 
 /**
- * @category   ZendService
- * @group      ZendService
- * @group      ZendService_Google
- * @group      ZendService_Google_Gcm
+ * @category   Laminas
+ * @group      Laminas
+ * @group      Laminas_Google
+ * @group      Laminas_Google_Gcm
  */
 class ResponseTest extends TestCase
 {

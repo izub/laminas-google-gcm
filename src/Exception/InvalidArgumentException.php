@@ -7,14 +7,14 @@
  * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  *
- * @category  ZendService
+ * @category  Laminas
  */
-namespace ZendService\Google\Exception;
+namespace Laminas\Google\Exception;
 
 /**
  * Invalid Argument Exception.
  *
- * @category  ZendService
+ * @category  Laminas
  */
 class InvalidArgumentException extends \InvalidArgumentException
 {

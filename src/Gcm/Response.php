@@ -7,18 +7,18 @@
  * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd New BSD License
  *
- * @category   ZendService
+ * @category   Laminas
  */
-namespace ZendService\Google\Gcm;
+namespace Laminas\Google\Gcm;
 
-use ZendService\Google\Exception;
+use Laminas\Google\Exception;
 
 /**
  * Google Cloud Messaging Response
  * This class parses out the response from
  * the Google Cloud Messaging API.
  *
- * @category   ZendService
+ * @category   Laminas
  */
 class Response
 {
@@ -76,7 +76,7 @@ class Response
     protected $cntCanonical;
 
     /**
-     * @var Message
+     * @var Message|null
      */
     protected $message;
 
@@ -93,12 +93,12 @@ class Response
     /**
      * Constructor.
      *
-     * @param string  $response
+     * @param array $response
      * @param Message $message
      *
      * @return Response
      *
-     * @throws \ZendService\Google\Exception\InvalidArgumentException
+     * @throws \Laminas\Google\Exception\InvalidArgumentException
      */
     public function __construct($response = null, Message $message = null)
     {

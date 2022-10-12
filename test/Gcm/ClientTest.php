@@ -7,21 +7,21 @@
  * @copyright  Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd New BSD License
  *
- * @category   ZendService
+ * @category   Laminas
  */
-namespace ZendServiceTest\Google\Gcm;
+namespace LaminasTest\Google\Gcm;
 
+use Laminas\Google\Gcm\Client;
+use Laminas\Google\Gcm\Message;
+use Laminas\Http\Client as HttpClient;
+use Laminas\Http\Client\Adapter\Test;
 use PHPUnit\Framework\TestCase;
-use Zend\Http\Client\Adapter\Test;
-use Zend\Http\Client as HttpClient;
-use ZendService\Google\Gcm\Client;
-use ZendService\Google\Gcm\Message;
 
 /**
- * @category   ZendService
- * @group      ZendService
- * @group      ZendService_Google
- * @group      ZendService_Google_Gcm
+ * @category   Laminas
+ * @group      Laminas
+ * @group      Laminas_Google
+ * @group      Laminas_Google_Gcm
  */
 class ClientTest extends TestCase
 {
@@ -83,7 +83,7 @@ class ClientTest extends TestCase
 
     public function testGetHttpClientReturnsDefault()
     {
-        self::assertInstanceOf('Zend\Http\Client', (new Client())->getHttpClient());
+        self::assertInstanceOf('Laminas\Http\Client', (new Client())->getHttpClient());
     }
 
     public function testSetHttpClient()

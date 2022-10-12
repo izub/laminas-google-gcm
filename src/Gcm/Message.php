@@ -7,19 +7,19 @@
  * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  *
- * @category  ZendService
+ * @category  Laminas
  */
-namespace ZendService\Google\Gcm;
+namespace Laminas\Google\Gcm;
 
-use ZendService\Google\Exception;
-use Zend\Json\Json;
+use Laminas\Google\Exception;
+use Laminas\Json\Json;
 
 /**
  * Google Cloud Messaging Message
  * This class defines a message to be sent
  * through the Google Cloud Messaging API.
  *
- * @category   ZendService
+ * @category   Laminas
  */
 class Message
 {
@@ -73,7 +73,7 @@ class Message
      *
      * @param array $ids
      *
-     * @throws \ZendService\Google\Exception\InvalidArgumentException
+     * @throws \Laminas\Google\Exception\InvalidArgumentException
      *
      * @return Message
      */
@@ -172,7 +172,7 @@ class Message
     /**
      * Set priority
      *
-     * @param string $priority
+     * @param string|null $priority
      * @return Message
      * @throws Exception\InvalidArgumentException
      */
@@ -190,7 +190,7 @@ class Message
      *
      * @param array $data
      *
-     * @throws \ZendService\Google\Exception\InvalidArgumentException
+     * @throws \Laminas\Google\Exception\InvalidArgumentException
      *
      * @return Message
      */
