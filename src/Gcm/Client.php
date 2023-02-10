@@ -12,7 +12,9 @@
 namespace Laminas\Google\Gcm;
 
 use Laminas\Google\Exception;
+use Laminas\Google\Exception\InvalidArgumentException;
 use Laminas\Http\Client as HttpClient;
+use Laminas\Json\Exception\RuntimeException;
 use Laminas\Json\Json;
 
 /**
@@ -27,7 +29,7 @@ class Client
     /**
      * @const string Server URI
      */
-    const SERVER_URI = 'https://fcm.googleapis.com/fcm/send';
+    public const SERVER_URI = 'https://fcm.googleapis.com/fcm/send';
 
     /**
      * @var \Laminas\Http\Client|null
@@ -61,7 +63,7 @@ class Client
     public function setApiKey($apiKey)
     {
         if (! is_string($apiKey) || empty($apiKey)) {
-            throw new Exception\InvalidArgumentException('The api key must be a string and not empty');
+            throw new InvalidArgumentException('The api key must be a string and not empty');
         }
         $this->apiKey = $apiKey;
 
@@ -103,13 +105,13 @@ class Client
      *
      * @param Message $message
      *
-     * @throws \Laminas\Json\Exception\RuntimeException
+     * @throws RuntimeException
      * @throws \Laminas\Google\Exception\RuntimeException
      * @throws \Laminas\Http\Exception\RuntimeException
      * @throws \Laminas\Http\Client\Exception\RuntimeException
      * @throws \Laminas\Http\Exception\InvalidArgumentException
      * @throws \Laminas\Http\Client\Exception\InvalidArgumentException
-     * @throws \Laminas\Google\Exception\InvalidArgumentException
+     * @throws InvalidArgumentException
      *
      * @return Response
      */

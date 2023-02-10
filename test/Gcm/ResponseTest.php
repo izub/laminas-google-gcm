@@ -14,6 +14,8 @@ namespace LaminasTest\Google\Gcm;
 use Laminas\Google\Gcm\Message;
 use Laminas\Google\Gcm\Response;
 use PHPUnit\Framework\TestCase;
+use PHPUnit_Framework_Error;
+use TypeError;
 
 /**
  * @category   Laminas
@@ -23,10 +25,7 @@ use PHPUnit\Framework\TestCase;
  */
 class ResponseTest extends TestCase
 {
-    /**
-     * @var Message
-     */
-    private $m;
+    private Message $m;
 
     public function setUp()
     {
@@ -65,17 +64,7 @@ class ResponseTest extends TestCase
             self::markTestSkipped('PHP 7 required.');
         }
 
-        $this->expectException(\TypeError::class);
-        new Response('{bad');
-    }
-
-    public function testInvalidConstructorThrowsExceptionOnPhp7()
-    {
-        if (PHP_VERSION_ID >= 70000) {
-            self::markTestSkipped('PHP >=5.5 required.');
-        }
-
-        $this->expectException(\PHPUnit_Framework_Error::class);
+        $this->expectException(TypeError::class);
         new Response('{bad');
     }
 

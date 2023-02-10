@@ -52,7 +52,7 @@ class ClientTest extends TestCase
             'failure' => $failure,
             'canonical_ids' => $ids,
             'results' => $results,
-        ]);
+        ], JSON_THROW_ON_ERROR);
     }
 
     public function setUp()
@@ -83,7 +83,7 @@ class ClientTest extends TestCase
 
     public function testGetHttpClientReturnsDefault()
     {
-        self::assertInstanceOf('Laminas\Http\Client', (new Client())->getHttpClient());
+        self::assertInstanceOf(HttpClient::class, (new Client())->getHttpClient());
     }
 
     public function testSetHttpClient()

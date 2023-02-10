@@ -11,8 +11,10 @@
  */
 namespace LaminasTest\Google\Gcm;
 
+use InvalidArgumentException;
 use Laminas\Google\Gcm\Message;
 use PHPUnit\Framework\TestCase;
+use RuntimeException;
 
 /**
  * @category   Laminas
@@ -34,10 +36,7 @@ class MessageTest extends TestCase
         ],
     ];
 
-    /**
-     * @var Message
-     */
-    private $m;
+    private Message $m;
 
     public function setUp()
     {
@@ -65,7 +64,7 @@ class MessageTest extends TestCase
 
     public function testInvalidRegistrationIdThrowsException()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->m->addRegistrationId(['1234']);
     }
 
@@ -83,7 +82,7 @@ class MessageTest extends TestCase
 
     public function testInvalidCollapseKeyThrowsException()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->m->setCollapseKey(['1234']);
     }
 
@@ -119,13 +118,13 @@ class MessageTest extends TestCase
 
     public function testInvalidDataThrowsException()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->m->addData(['1234'], 'value');
     }
 
     public function testDuplicateDataKeyThrowsException()
     {
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(RuntimeException::class);
         $this->m->setData($this->validData);
         $this->m->addData('key', 'value');
     }
@@ -144,13 +143,13 @@ class MessageTest extends TestCase
 
     public function testExpectedTimeToLiveBehavior()
     {
-        self::assertEquals($this->m->getTimeToLive(), 2419200);
+        self::assertEquals($this->m->getTimeToLive(), 2_419_200);
         self::assertNotContains('time_to_live', $this->m->toJson());
         $this->m->setTimeToLive(12345);
         self::assertEquals($this->m->getTimeToLive(), 12345);
         self::assertContains('time_to_live', $this->m->toJson());
-        $this->m->setTimeToLive(2419200);
-        self::assertEquals($this->m->getTimeToLive(), 2419200);
+        $this->m->setTimeToLive(2_419_200);
+        self::assertEquals($this->m->getTimeToLive(), 2_419_200);
         self::assertNotContains('time_to_live', $this->m->toJson());
     }
 
@@ -168,7 +167,7 @@ class MessageTest extends TestCase
 
     public function testInvalidRestrictedPackageThrowsException()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->m->setRestrictedPackageName(['1234']);
     }
 

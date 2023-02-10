@@ -12,6 +12,7 @@
 namespace Laminas\Google\Gcm;
 
 use Laminas\Google\Exception;
+use Laminas\Google\Exception\InvalidArgumentException;
 
 /**
  * Google Cloud Messaging Response
@@ -25,35 +26,35 @@ class Response
     /**
      * @const Message ID field
      */
-    const RESULT_MESSAGE_ID = 'message_id';
+    public const RESULT_MESSAGE_ID = 'message_id';
 
     /**
      * @const Error field
      */
-    const RESULT_ERROR = 'error';
+    public const RESULT_ERROR = 'error';
 
     /**
      * @const Canonical field
      */
-    const RESULT_CANONICAL = 'registration_id';
+    public const RESULT_CANONICAL = 'registration_id';
 
     /**
      * Error field responses
      * @link https://developers.google.com/cloud-messaging/http-server-ref#error-codes
      * @var string
      */
-    const ERROR_MISSING_REGISTRATION         = 'MissingRegistration';
-    const ERROR_INVALID_REGISTRATION         = 'InvalidRegistration';
-    const ERROR_NOT_REGISTERED               = 'NotRegistered';
-    const ERROR_INVALID_PACKAGE_NAME         = 'InvalidPackageName';
-    const ERROR_MISMATCH_SENDER_ID           = 'MismatchSenderId';
-    const ERROR_MESSAGE_TOO_BIG              = 'MessageTooBig';
-    const ERROR_INVALID_DATA_KEY             = 'InvalidDataKey';
-    const ERROR_INVALID_TTL                  = 'InvalidTtl';
-    const ERROR_UNAVAILABLE                  = 'Unavailable';
-    const ERROR_INTERNAL_SERVER_ERROR        = 'InternalServerError';
-    const ERROR_DEVICE_MESSAGE_RATE_EXCEEDED = 'DeviceMessageRateExceeded';
-    const ERROR_TOPICS_MESSAGE_RATE_EXCEEDED = 'TopicsMessageRateExceeded';
+    public const ERROR_MISSING_REGISTRATION         = 'MissingRegistration';
+    public const ERROR_INVALID_REGISTRATION         = 'InvalidRegistration';
+    public const ERROR_NOT_REGISTERED               = 'NotRegistered';
+    public const ERROR_INVALID_PACKAGE_NAME         = 'InvalidPackageName';
+    public const ERROR_MISMATCH_SENDER_ID           = 'MismatchSenderId';
+    public const ERROR_MESSAGE_TOO_BIG              = 'MessageTooBig';
+    public const ERROR_INVALID_DATA_KEY             = 'InvalidDataKey';
+    public const ERROR_INVALID_TTL                  = 'InvalidTtl';
+    public const ERROR_UNAVAILABLE                  = 'Unavailable';
+    public const ERROR_INTERNAL_SERVER_ERROR        = 'InternalServerError';
+    public const ERROR_DEVICE_MESSAGE_RATE_EXCEEDED = 'DeviceMessageRateExceeded';
+    public const ERROR_TOPICS_MESSAGE_RATE_EXCEEDED = 'TopicsMessageRateExceeded';
 
     /**
      * @var int
@@ -98,7 +99,7 @@ class Response
      *
      * @return Response
      *
-     * @throws \Laminas\Google\Exception\InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function __construct($response = null, Message $message = null)
     {
@@ -163,7 +164,7 @@ class Response
             $response['canonical_ids'],
             $response['multicast_id']
         )) {
-            throw new Exception\InvalidArgumentException('Response did not contain the proper fields');
+            throw new InvalidArgumentException('Response did not contain the proper fields');
         }
 
         $this->response = $response;

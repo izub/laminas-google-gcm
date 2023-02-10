@@ -12,6 +12,8 @@
 namespace Laminas\Google\Gcm;
 
 use Laminas\Google\Exception;
+use Laminas\Google\Exception\InvalidArgumentException;
+use Laminas\Google\Exception\RuntimeException;
 use Laminas\Json\Json;
 
 /**
@@ -56,7 +58,7 @@ class Message
     /**
      * @var int
      */
-    protected $timeToLive = 2419200;
+    protected $timeToLive = 2_419_200;
 
     /**
      * @var string
@@ -73,7 +75,7 @@ class Message
      *
      * @param array $ids
      *
-     * @throws \Laminas\Google\Exception\InvalidArgumentException
+     * @throws InvalidArgumentException
      *
      * @return Message
      */
@@ -109,7 +111,7 @@ class Message
     public function addRegistrationId($id)
     {
         if (! is_string($id) || empty($id)) {
-            throw new Exception\InvalidArgumentException('$id must be a non-empty string');
+            throw new InvalidArgumentException('$id must be a non-empty string');
         }
         if (! in_array($id, $this->registrationIds)) {
             $this->registrationIds[] = $id;
@@ -152,7 +154,7 @@ class Message
     public function setCollapseKey($key)
     {
         if (null !== $key && ! (is_string($key) && strlen($key) > 0)) {
-            throw new Exception\InvalidArgumentException('$key must be null or a non-empty string');
+            throw new InvalidArgumentException('$key must be null or a non-empty string');
         }
         $this->collapseKey = $key;
 
@@ -179,7 +181,7 @@ class Message
     public function setPriority($priority)
     {
         if (! is_null($priority) && ! (is_string($priority) && strlen($priority) > 0)) {
-            throw new Exception\InvalidArgumentException('$priority must be null or a non-empty string');
+            throw new InvalidArgumentException('$priority must be null or a non-empty string');
         }
         $this->priority = $priority;
         return $this;
@@ -190,7 +192,7 @@ class Message
      *
      * @param array $data
      *
-     * @throws \Laminas\Google\Exception\InvalidArgumentException
+     * @throws InvalidArgumentException
      *
      * @return Message
      */
@@ -228,10 +230,10 @@ class Message
     public function addData($key, $value)
     {
         if (! is_string($key) || empty($key)) {
-            throw new Exception\InvalidArgumentException('$key must be a non-empty string');
+            throw new InvalidArgumentException('$key must be a non-empty string');
         }
         if (array_key_exists($key, $this->data)) {
-            throw new Exception\RuntimeException('$key conflicts with current set data');
+            throw new RuntimeException('$key conflicts with current set data');
         }
         $this->data[$key] = $value;
 
@@ -287,10 +289,10 @@ class Message
     public function addNotification($key, $value)
     {
         if (! is_string($key) || empty($key)) {
-            throw new Exception\InvalidArgumentException('$key must be a non-empty string');
+            throw new InvalidArgumentException('$key must be a non-empty string');
         }
         if (array_key_exists($key, $this->notification)) {
-            throw new Exception\RuntimeException('$key conflicts with current set data');
+            throw new RuntimeException('$key conflicts with current set data');
         }
         $this->notification[$key] = $value;
         return $this;
@@ -368,7 +370,7 @@ class Message
     public function setRestrictedPackageName($name)
     {
         if (null !== $name && ! (is_string($name) && strlen($name) > 0)) {
-            throw new Exception\InvalidArgumentException('$name must be null OR a non-empty string');
+            throw new InvalidArgumentException('$name must be null OR a non-empty string');
         }
         $this->restrictedPackageName = $name;
 
@@ -437,7 +439,7 @@ class Message
         if ($this->delayWhileIdle) {
             $json['delay_while_idle'] = $this->delayWhileIdle;
         }
-        if ($this->timeToLive != 2419200) {
+        if ($this->timeToLive != 2_419_200) {
             $json['time_to_live'] = $this->timeToLive;
         }
         if ($this->restrictedPackageName) {
