@@ -55,7 +55,7 @@ class ClientTest extends TestCase
         ], JSON_THROW_ON_ERROR);
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->httpClient = new HttpClient();
         $this->httpAdapter = new Test();
@@ -71,7 +71,7 @@ class ClientTest extends TestCase
     public function testSetApiKeyThrowsExceptionOnNonString()
     {
         $this->expectException('InvalidArgumentException');
-        $this->gcmClient->setApiKey([]);
+        $this->gcmClient->setApiKey(null);
     }
 
     public function testSetApiKey()

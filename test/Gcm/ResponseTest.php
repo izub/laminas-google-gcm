@@ -25,13 +25,6 @@ use TypeError;
  */
 class ResponseTest extends TestCase
 {
-    private Message $m;
-
-    public function setUp()
-    {
-        $this->m = new Message();
-    }
-
     public function testConstructorExpectedBehavior()
     {
         $response = new Response();
@@ -60,10 +53,6 @@ class ResponseTest extends TestCase
 
     public function testInvalidConstructorThrowsException()
     {
-        if (PHP_VERSION_ID < 70000) {
-            self::markTestSkipped('PHP 7 required.');
-        }
-
         $this->expectException(TypeError::class);
         new Response('{bad');
     }

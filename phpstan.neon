@@ -1,0 +1,10 @@
+parameters:
+    level: 4
+    fileExtensions:
+        - php
+    paths:
+        - src
+        - test
+    reportUnmatchedIgnoredErrors: false
+includes:
+	- vendor/phpstan/phpstan-deprecation-rules/rules.neon

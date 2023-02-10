@@ -29,7 +29,7 @@ class Client
     /**
      * @const string Server URI
      */
-    public const SERVER_URI = 'https://fcm.googleapis.com/fcm/send';
+    final public const SERVER_URI = 'https://fcm.googleapis.com/fcm/send';
 
     /**
      * @var \Laminas\Http\Client|null
@@ -90,7 +90,6 @@ class Client
     /**
      * Set HTTP Client.
      *
-     * @param HttpClient $http
      * @return Client
      */
     public function setHttpClient(HttpClient $http)
@@ -103,7 +102,6 @@ class Client
     /**
      * Send Message.
      *
-     * @param Message $message
      *
      * @throws RuntimeException
      * @throws \Laminas\Google\Exception\RuntimeException
@@ -112,7 +110,6 @@ class Client
      * @throws \Laminas\Http\Exception\InvalidArgumentException
      * @throws \Laminas\Http\Client\Exception\InvalidArgumentException
      * @throws InvalidArgumentException
-     *
      * @return Response
      */
     public function send(Message $message)

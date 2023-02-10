@@ -73,10 +73,8 @@ class Message
     /**
      * Set Registration Ids.
      *
-     * @param array $ids
      *
      * @throws InvalidArgumentException
-     *
      * @return Message
      */
     public function setRegistrationIds(array $ids)
@@ -190,10 +188,8 @@ class Message
     /**
      * Set Data
      *
-     * @param array $data
      *
      * @throws InvalidArgumentException
-     *
      * @return Message
      */
     public function setData(array $data)
@@ -220,14 +216,12 @@ class Message
      * Add Data.
      *
      * @param string $key
-     * @param mixed  $value
      *
      * @throws Exception\RuntimeException
      * @throws Exception\InvalidArgumentException
-     *
      * @return Message
      */
-    public function addData($key, $value)
+    public function addData($key, mixed $value)
     {
         if (! is_string($key) || empty($key)) {
             throw new InvalidArgumentException('$key must be a non-empty string');
@@ -255,7 +249,6 @@ class Message
     /**
      * Set notification
      *
-     * @param array $data
      * @return Message
      */
     public function setNotification(array $data)
@@ -281,12 +274,11 @@ class Message
      * Add notification data
      *
      * @param string $key
-     * @param mixed $value
      * @return Message
      * @throws Exception\InvalidArgumentException
      * @throws Exception\RuntimeException
      */
-    public function addNotification($key, $value)
+    public function addNotification($key, mixed $value)
     {
         if (! is_string($key) || empty($key)) {
             throw new InvalidArgumentException('$key must be a non-empty string');
